@@ -60,10 +60,13 @@ public class aliexp {
 		System.out.println(li);
 		WebElement second=li.get(2);
 		js.executeScript("arguments[0].click();", second);
-		 ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		 System.out.println(tabs.size());
-		 System.out.println(tabs);
-		 driver.switchTo().window(tabs.get(1));
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		System.out.println(tabs.size());
+		System.out.println(tabs);
+		driver.switchTo().window(tabs.get(1));
+		List<WebElement> listofitems = driver.findElements(By.className("sku-item--image--mXsHo3h"));
+		System.out.println(listofitems.size());
+		System.out.println(listofitems);
 		
 	
 	
