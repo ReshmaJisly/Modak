@@ -14,10 +14,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import modak_ex.Pageobjectmodel;
 
 public class aliexp {
+	public static WebElement poxysearch;
+	public static WebElement poxybutton;
+	public static WebElement alisearch;
+	public static WebElement page2;
 
 	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
@@ -28,12 +34,10 @@ public class aliexp {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
-		
-		WebElement poxysearch=driver.findElement(By.id("unique-form-control"));
+		PageFactory.initElements(driver, aliexp.class);
 		poxysearch.sendKeys("https://www.aliexpress.com/");
-		driver.findElement(By.id("unique-btn-blue")).click();
-		WebElement search=driver.findElement(By.id("search-words"));
-		search.sendKeys("instax mini");
+		poxybutton.click();
+		alisearch.sendKeys("instax mini");
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.ENTER);
 		actions.build().perform();
@@ -51,7 +55,7 @@ public class aliexp {
 		actions.build().perform();
 		actions.sendKeys(Keys.PAGE_DOWN);
 		actions.build().perform();
-		WebElement page2=driver.findElement(By.linkText("2"));
+		
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", page2);
 		
